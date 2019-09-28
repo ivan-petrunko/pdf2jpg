@@ -12,9 +12,19 @@ Some day will be rewritten to `ImageMagick`.
 * Install GhostScript & some Python tools system-wide 
 (Currently Debian-way only. Please contribute to add more supported platforms.)
 ```bash
-sudo apt install ghostscript python3-pyqt5 pyqt5-dev-tools
+sudo apt install ghostscript python3-pyqt5
 ```
-* Launch `pdf2jpg.py`
+* Install pdf2jpg:
+```bash
+sudo mkdir /opt/pdf2jpg
+sudo chown -R $USER: /opt/pdf2jpg
+cd /opt/pdf2jpg
+curl -O -L https://raw.githubusercontent.com/ivan-petrunko/pdf2jpg/master/pdf2jpg.py
+curl -O -L https://raw.githubusercontent.com/ivan-petrunko/pdf2jpg/master/design.py
+chmod +x pdf2jpg.py
+sudo ln -s /opt/pdf2jpg/pdf2jpg.py /usr/local/bin/
+```
+* Launch application: Press `Alt + F2`, enter `pdf2jpg.py` and hit `Enter`
 * Choose source PDF file
 * Choose destination folder
 * Set preferred DPI: 72, 144, 300, 600. Default: 300.
@@ -30,7 +40,7 @@ Or create a new issue and I'll do it for you some day.
 ## Developer's manual (contributing)
 ### Install QtCreator
 ```bash
-sudo apt install qtcreator
+sudo apt install pyqt5-dev-tools qtcreator
 ```
 
 ### Install pip & virtualenv to user-space
@@ -72,6 +82,7 @@ pip install -r requirements.txt
 * Send me pull request.
 
 ## TODO
+* Create installation script.
 * Use ImageMagick instead of ghostscript.
 * Add page range setting.
 * Add output image quality selector.
